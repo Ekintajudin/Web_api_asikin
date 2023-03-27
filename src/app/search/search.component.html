@@ -1,0 +1,54 @@
+<style>
+body {background-color:powderblue;}
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+    <body>
+<h1>Need Music</h1>
+<p class="need">Use MySpotify App to find new music</p>
+<form>
+ <div class="form-group">
+ <input
+ class="w3-input"
+ type="text"
+ [(ngModel)]="searchStr"
+ placeholder="Search Artist"
+ [ngModelOptions]="{ standalone: true }"
+ />
+ </div>
+ <button
+ class="w3-button w3-teal"
+ type="submit"
+ (click)="searchSong()"
+ name="submit"
+ value="submit"
+ >
+ Submit
+ </button>
+</form>
+<table>
+<ng-container *ngIf="listOfMusic !== null">
+ <div *ngFor="let artist of listOfMusic">
+ <tr><p class="name">Profile of {{ artist.name }}</p></tr>
+ <tr><p>Genres: {{ artist.genres }}</p></tr>
+ <tr><p>Followers: {{ artist.followers.total }}</p></tr>
+ <tr><p><img src="{{ artist.images[2].url }}"></p></tr>
+ </div>
+</ng-container>
+</table>
+</body>
